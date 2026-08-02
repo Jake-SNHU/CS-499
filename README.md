@@ -71,7 +71,7 @@ The CRUD module and dashboard were enhanced during CS 499 to improve security, d
 - Improved user feedback through Toast messages
 - Improved RecyclerView update process
 
-### Primary Files
+### Primary Files where enhancements were made
 
 ### Android Project
 
@@ -101,7 +101,7 @@ The CRUD module and dashboard were enhanced during CS 499 to improve security, d
 - Added reusable helper methods for searching, updating, and sorting events
 - Improved overall data management and application performance
 
-### Primary Files
+### Primary Files where enhancements were made
 
 - `DashboardActivity.java`
 - `DatabaseHelper.java`
@@ -129,36 +129,17 @@ The CRUD module and dashboard were enhanced during CS 499 to improve security, d
 - Improved Dash layout organization and code readability
 - Optimized MongoDB queries to reduce unnecessary database operations
 
-### Primary Files
+### Primary Files where enhancements were made
 
 - `CRUD_Python_Module.py`
 - `ProjectTwoDashboard.ipynb`
 
 # Repository Structure
-
-```
-CS360_Project3_Enhancement1/
-    DashboardActivity.java
-    LoginActivity.java
-    DatabaseHelper.java
-    EventAdapter.java
-    PermissionActivity.java
-
-CS360_Project3_Enhancement2/
-    DashboardActivity.java
-    DatabaseHelper.java
-    EventAdapter.java
-    EventSearch.java
-    activity_dashboard.xml
-
-CS340_Database_Enhancement/
-    CRUD_Python_Module.py
-    ProjectTwoDashboard.ipynb
-
-Milestone_Two_Narrative.docx
-Milestone_Three_Narrative.docx
-Code_Review_Script.docx
-```
+- CS360_Project3_Original (contains the original complete android app)
+- CS360_Project3_Enhancement1 (contains the complete android app after all category one enhancements)
+- CS360_Project3_Enhancement2 (contains the complete android app after all category two enhancements)
+- CS340_Project_Original (contains the original MongoDB dashboard project files)
+- CS340_Project_Enhancement3 (contains the enhanced MongoDB dashboard project files)
 
 ---
 
@@ -251,11 +232,11 @@ This repository demonstrates the CS 499 course outcomes by showing the ability t
 
 This repository also includes the documentation developed throughout the capstone process:
 
-- Code Review Script
-- Milestone Two Narrative
-- Milestone Three Narrative
-- Enhancement Documentation
-- ePortfolio Supporting Materials
+- Code Review
+- CS 499 Milestone Two (contains the narrative that describes the enhancements made in Category one)
+- CS 499 Milestone Three (contains the narrative that describes the enhancements made in Category two)
+- CS 499 Milestone Four (contains the narrative that describes the enhancements made in Category three)
+
 
 These documents explain the reasoning behind each enhancement and demonstrate the software engineering process used throughout the project.
 
