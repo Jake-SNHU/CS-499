@@ -1,91 +1,268 @@
-
 # CS 499 Computer Science ePortfolio
 
-## Overview
+# Overview
 
-This repository contains the artifacts, enhancements, and supporting documentation developed for my CS 499 Computer Science Capstone at Southern New Hampshire University.
+This repository contains the enhancement artifacts, documentation, and supporting materials created for my **CS 499 Computer Science Capstone** at **Southern New Hampshire University**.
 
-The purpose of this project is to demonstrate the knowledge and technical skills I have developed throughout the Computer Science program by enhancing existing software artifacts in three core areas:
+The goal of this repository is to demonstrate my growth as a software developer by enhancing previously completed coursework in three major areas of computer science:
 
 - Software Design and Engineering
 - Algorithms and Data Structures
 - Databases
 
-Each artifact was selected from previous coursework and enhanced to demonstrate growth as a software developer while meeting the CS 499 course outcomes.
+Rather than creating entirely new applications, each artifact was selected from previous coursework and significantly improved to demonstrate stronger software engineering practices, more efficient algorithms, and secure database implementation.
 
 ---
 
-## Featured Project
+# Featured Artifacts
 
-### Event Tracking Android Application
+## 1. Android Event Tracking Application (CS 360)
 
-The primary artifact is an Android event tracking application originally developed in CS 360 (Mobile Architecture and Programming). The application allows users to:
+Originally developed during **CS 360: Mobile Architecture and Programming**, this Android application allows users to:
 
 - Create user accounts
-- Log in securely
-- Create events
+- Authenticate users
+- Store events in SQLite
+- Display events using RecyclerView
 - Delete events
-- Store data using SQLite
-- Request SMS permissions for event reminders
+- Search events
+- Sort events
+- Edit existing events
+- Request SMS permissions for reminders
+
+This application was enhanced during the CS 499 Capstone to improve software quality, efficiency, and security.
 
 ---
 
-## Enhancements Completed in CS360_Project3_Enhancement1 and CS360_Project3_Enhancement2
+## 2. Grazioso Salvare Animal Dashboard (CS 340)
 
-### Software Design & Engineering
+Originally developed during **CS 340: Client/Server Development**, this project uses:
+
+- Python
+- MongoDB
+- Dash
+- Plotly
+- Dash Leaflet
+
+The dashboard allows users to:
+
+- Query MongoDB
+- Filter rescue animals
+- Display interactive charts
+- Display animal locations on a live map
+
+The CRUD module and dashboard were enhanced during CS 499 to improve security, database efficiency, maintainability, and usability.
+
+---
+
+# Enhancement Summary
+
+## Software Design & Engineering (Enhancement One)
+
+### Improvements
 
 - Refactored large methods into reusable helper functions
+- Added detailed method documentation
 - Added input validation throughout the application
-- Improved exception handling
-- Increased code documentation and readability
-- Improved overall application maintainability
+- Added exception handling
+- Improved class organization
+- Improved readability and maintainability
+- Reduced duplicated code
+- Improved user feedback through Toast messages
+- Improved RecyclerView update process
 
-### Algorithms & Data Structures
+### Primary Files
 
-- Implemented binary search for event searching
-- Added sorting algorithms for event organization
-- Improved RecyclerView update efficiency
-- Optimized event retrieval and display
-- Enhanced application performance with better data management
+### Android Project
 
-### Databases
-
-- Added complete CRUD functionality
-- Implemented secure password hashing using SHA-256
-- Added database validation and error checking
-- Improved query organization
-- Added event searching and update capabilities
-
----
-The Milestone Two and Three word documents contain naratives for the process behind making the above enhancements. 
+- `DashboardActivity.java`
+- `LoginActivity.java`
+- `DatabaseHelper.java`
+- `EventAdapter.java`
+- `PermissionActivity.java`
 
 ---
 
-## Technologies Used
+## Algorithms & Data Structures (Enhancement Two)
+
+### Improvements
+
+- Implemented Binary Search for locating events
+- Added event searching functionality
+- Added dynamic event sorting
+- Implemented alphabetical, date, and time sorting
+- Improved RecyclerView efficiency using cursor swapping
+- Reduced unnecessary Activity recreation
+- Optimized SQLite queries for faster retrieval
+- Added event update functionality for editing existing events
+- Added SHA-256 password hashing for secure user authentication
+- Improved database validation and input checking
+- Replaced raw SQL queries with parameterized SQLite queries
+- Added reusable helper methods for searching, updating, and sorting events
+- Improved overall data management and application performance
+
+### Primary Files
+
+- `DashboardActivity.java`
+- `DatabaseHelper.java`
+- `EventAdapter.java`
+- `EventSearch.java`
+- `activity_dashboard.xml`
+
+---
+
+## Databases (Enhancement Three)
+
+### MongoDB Dashboard Improvements
+
+- Refactored the MongoDB CRUD module into reusable methods
+- Added connection validation and centralized exception handling
+- Added projection support for more efficient queries
+- Added sorting support for MongoDB searches
+- Added pagination support for large datasets
+- Improved CRUD method validation and error reporting
+- Added dashboard search functionality
+- Added dashboard sorting controls
+- Added dashboard statistics and summary metrics
+- Improved interactive filtering of rescue animals
+- Enhanced Plotly visualizations
+- Improved Dash layout organization and code readability
+- Optimized MongoDB queries to reduce unnecessary database operations
+
+### Primary Files
+
+- `CRUD_Python_Module.py`
+- `ProjectTwoDashboard.ipynb`
+
+# Repository Structure
+
+```
+CS360_Project3_Enhancement1/
+    DashboardActivity.java
+    LoginActivity.java
+    DatabaseHelper.java
+    EventAdapter.java
+    PermissionActivity.java
+
+CS360_Project3_Enhancement2/
+    DashboardActivity.java
+    DatabaseHelper.java
+    EventAdapter.java
+    EventSearch.java
+    activity_dashboard.xml
+
+CS340_Database_Enhancement/
+    CRUD_Python_Module.py
+    ProjectTwoDashboard.ipynb
+
+Milestone_Two_Narrative.docx
+Milestone_Three_Narrative.docx
+Code_Review_Script.docx
+```
+
+---
+
+# Technologies Used
+
+## Mobile Development
 
 - Java
 - Android Studio
 - SQLite
 - RecyclerView
 - XML
+
+## Database Development
+
+- MongoDB
+- PyMongo
+- Jupyter Notebook
+
+## Dashboard Development
+
+- Dash
+- Plotly Express
+- Dash Leaflet
+- Pandas
+
+## Development Tools
+
 - Git
 - GitHub
+- IntelliJ / Android Studio
+- VS Code
 
 ---
 
-## Learning Outcomes
+# Skills Demonstrated
 
-This project demonstrates my ability to:
+This repository demonstrates experience with:
 
-- Design maintainable software architectures
-- Implement efficient algorithms and data structures
-- Develop secure database applications
-- Apply secure coding practices
-- Improve existing software through iterative enhancements
-- Produce professional software documentation
+### Software Engineering
+
+- Object-Oriented Programming
+- Code Refactoring
+- Modular Design
+- Exception Handling
+- Documentation
+- Maintainability
+
+### Algorithms & Data Structures
+
+- Binary Search
+- Sorting Algorithms
+- Efficient Data Retrieval
+- RecyclerView Optimization
+- Cursor Management
+
+### Database Development
+
+- SQLite
+- MongoDB
+- CRUD Operations
+- Query Optimization
+- Secure Password Storage
+- SHA-256 Hashing
+- Data Validation
+
+### Security
+
+- Input Validation
+- Password Encryption
+- Parameterized Queries
+- Error Handling
+- Secure Authentication
 
 ---
 
-## Repository Status
+# Course Outcomes Demonstrated
 
-This repository contains the completed enhancement artifacts and supporting documentation prepared for my professional ePortfolio as part of the CS 499 Capstone course.
+This repository demonstrates the CS 499 course outcomes by showing the ability to:
+
+- Design and evaluate secure, maintainable software solutions.
+- Apply algorithmic and data structure concepts to improve software performance.
+- Design, implement, and optimize relational and NoSQL database systems.
+- Refactor and enhance existing software using professional software engineering practices.
+- Communicate technical decisions through professional documentation, code reviews, and narratives.
+
+---
+
+# Supporting Documentation
+
+This repository also includes the documentation developed throughout the capstone process:
+
+- Code Review Script
+- Milestone Two Narrative
+- Milestone Three Narrative
+- Enhancement Documentation
+- ePortfolio Supporting Materials
+
+These documents explain the reasoning behind each enhancement and demonstrate the software engineering process used throughout the project.
+
+---
+
+# Repository Status
+
+**Status:** Completed
+
+This repository contains the completed enhancement artifacts submitted for the **CS 499 Computer Science Capstone** at Southern New Hampshire University. Together, these projects demonstrate my ability to analyze existing software, implement meaningful enhancements, improve security and performance, and produce professional documentation suitable for inclusion in a technical ePortfolio.
