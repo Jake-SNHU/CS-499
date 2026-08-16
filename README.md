@@ -26,10 +26,10 @@ Rather than creating entirely new applications, each artifact was selected from 
 This repository also includes the documentation developed throughout the capstone process:
 
 - Code Review
+- Professional Self Assessment
 - CS 499 Milestone Two (contains the narrative that describes the enhancements made in Category one)
 - CS 499 Milestone Three (contains the narrative that describes the enhancements made in Category two)
 - CS 499 Milestone Four (contains the narrative that describes the enhancements made in Category three)
-
 
 These documents explain the reasoning behind each enhancement and demonstrate the software engineering process used throughout the project.
 
@@ -244,19 +244,7 @@ This repository demonstrates the CS 499 course outcomes by showing the ability t
 
 ---
 
-# Supporting Documentation
 
-This repository also includes the documentation developed throughout the capstone process:
-
-- Code Review
-- CS 499 Milestone Two (contains the narrative that describes the enhancements made in Category one)
-- CS 499 Milestone Three (contains the narrative that describes the enhancements made in Category two)
-- CS 499 Milestone Four (contains the narrative that describes the enhancements made in Category three)
-
-
-These documents explain the reasoning behind each enhancement and demonstrate the software engineering process used throughout the project.
-
----
 
 # Repository Status
 
