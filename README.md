@@ -13,6 +13,27 @@ The goal of this repository is to demonstrate my growth as a software developer 
 Rather than creating entirely new applications, each artifact was selected from previous coursework and significantly improved to demonstrate stronger software engineering practices, more efficient algorithms, and secure database implementation.
 
 ---
+# Repository Structure
+- CS360_Project3_Original (contains the original complete android app)
+- CS360_Project3_Enhancement1 (contains the complete android app after all category one enhancements)
+- CS360_Project3_Enhancement2 (contains the complete android app after all category two enhancements)
+- CS340_Project_Original (contains the original MongoDB dashboard project files)
+- CS340_Project_Enhancement3 (contains the enhanced MongoDB dashboard project files)
+
+---
+# Supporting Documentation
+
+This repository also includes the documentation developed throughout the capstone process:
+
+- Code Review
+- CS 499 Milestone Two (contains the narrative that describes the enhancements made in Category one)
+- CS 499 Milestone Three (contains the narrative that describes the enhancements made in Category two)
+- CS 499 Milestone Four (contains the narrative that describes the enhancements made in Category three)
+
+
+These documents explain the reasoning behind each enhancement and demonstrate the software engineering process used throughout the project.
+
+---
 
 # Featured Artifacts
 
@@ -134,12 +155,7 @@ The CRUD module and dashboard were enhanced during CS 499 to improve security, d
 - `CRUD_Python_Module.py`
 - `ProjectTwoDashboard.ipynb`
 
-# Repository Structure
-- CS360_Project3_Original (contains the original complete android app)
-- CS360_Project3_Enhancement1 (contains the complete android app after all category one enhancements)
-- CS360_Project3_Enhancement2 (contains the complete android app after all category two enhancements)
-- CS340_Project_Original (contains the original MongoDB dashboard project files)
-- CS340_Project_Enhancement3 (contains the enhanced MongoDB dashboard project files)
+
 
 ---
 
