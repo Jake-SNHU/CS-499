@@ -25,7 +25,7 @@ Rather than creating entirely new applications, each artifact was selected from 
 
 This repository also includes the documentation developed throughout the capstone process:
 
-- Code Review
+- Code Review https://youtu.be/CTF_aJuOHx4
 - Professional Self Assessment
 - CS 499 Milestone Two (contains the narrative that describes the enhancements made in Category one)
 - CS 499 Milestone Three (contains the narrative that describes the enhancements made in Category two)
