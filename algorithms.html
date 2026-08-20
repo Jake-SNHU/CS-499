@@ -55,9 +55,13 @@
 <h2>Category Two Narrative</h2>
 
 <p>
-    The artifact I selected for the Algorithms and Data Structures category is an Android Event Tracker application that I originally developed in CS 360: Mobile Architecture and Programming. The application allows users to create an account, log in, and manage personal events using a local SQLite database. It was originally created in 2025 as part of a course project focused on Android application development. For CS 499, I enhanced the application by incorporating more advanced algorithms and data structures while improving the efficiency, organization, and functionality of the application.
-	I selected this artifact for Category Two because the original application provided a good foundation for demonstrating how algorithms and data structures can improve an existing software system. The original application could store and display events, but its functionality was relatively basic. Events were retrieved from the database and displayed through a RecyclerView, but there was no dedicated searching algorithm, limited sorting functionality, and no efficient way to update the displayed data after changes. This gave me an opportunity to apply concepts from algorithms and data structures to a working application rather than demonstrating them only through isolated programming exercises.
-	One of the most important enhancements was the addition of a dedicated EventSearch class. This class implements a binary search algorithm for locating an event within a sorted list. The algorithm first sorts the list and then repeatedly divides the search area in half until the target is found or the search range is exhausted. The core implementation is:
+The artifact I selected for the Algorithms and Data Structures category is an Android Event Tracker application that I originally developed in CS 360: Mobile Architecture and Programming. The application allows users to create an account, log in, and manage personal events using a local SQLite database. It was originally created in 2025 as part of a course project focused on Android application development. For CS 499, I enhanced the application by incorporating more advanced algorithms and data structures while improving the efficiency, organization, and functionality of the application.
+</p>
+<p>
+I selected this artifact for Category Two because the original application provided a good foundation for demonstrating how algorithms and data structures can improve an existing software system. The original application could store and display events, but its functionality was relatively basic. Events were retrieved from the database and displayed through a RecyclerView, but there was no dedicated searching algorithm, limited sorting functionality, and no efficient way to update the displayed data after changes. This gave me an opportunity to apply concepts from algorithms and data structures to a working application rather than demonstrating them only through isolated programming exercises.
+</p>
+<p>	
+One of the most important enhancements was the addition of a dedicated EventSearch class. This class implements a binary search algorithm for locating an event within a sorted list. The algorithm first sorts the list and then repeatedly divides the search area in half until the target is found or the search range is exhausted. The core implementation is:
 Collections.sort(events);
 
 int low = 0;
@@ -79,8 +83,12 @@ while (low <= high) {
 }
 
 return -1;
+</p>
+<p>
 	This enhancement gave me practical experience with how the organization of data affects algorithm performance. Binary search requires the data to be sorted, so I had to consider both the sorting process and the search process rather than treating them as separate problems. The implementation compares event names without regard to capitalization, which makes the search more user-friendly.
-	I also enhanced the database retrieval process to support multiple sorting options. The DatabaseHelper class now allows events to be retrieved based on different fields. Instead of always returning events in the same order, the getAllEvents() method accepts a sorting option and determines the appropriate database ordering:
+</p>
+<p>
+I also enhanced the database retrieval process to support multiple sorting options. The DatabaseHelper class now allows events to be retrieved based on different fields. Instead of always returning events in the same order, the getAllEvents() method accepts a sorting option and determines the appropriate database ordering:
 switch (sortBy) {
 
     case "date":
@@ -94,7 +102,11 @@ switch (sortBy) {
     default:
         orderBy = COL_EVENT_NAME + " ASC";
 }
+</p>
+<p>
 	This allows the application to organize events alphabetically by name or chronologically by date and time. This was an important enhancement because it demonstrated how data organization can directly affect the usability of an application. Rather than forcing the user to view events in one fixed order, the application can organize the data based on what the user needs.
+</p>
+<p>
 	Another Category Two enhancement was adding event searching through the database. The searchEvents() method uses a parameterized SQLite query to find event names containing a particular keyword:
 return db.query(
         TABLE_EVENTS,
@@ -105,8 +117,12 @@ return db.query(
         null,
         COL_EVENT_NAME + " ASC"
 );
+</p>
+<p>
 	This provides a more practical way for users to locate events without manually searching through the entire RecyclerView. It also demonstrates the use of database queries as a data retrieval strategy while maintaining secure parameterized input.
-	I also added event editing functionality. The original application could create and delete events, but users could not modify an event after it had been saved. I added an updateEvent() method to DatabaseHelper that identifies the correct record using its unique event ID and updates the associated fields:
+</p>
+<p>
+I also added event editing functionality. The original application could create and delete events, but users could not modify an event after it had been saved. I added an updateEvent() method to DatabaseHelper that identifies the correct record using its unique event ID and updates the associated fields:
 int rows = db.update(
         TABLE_EVENTS,
         values,
@@ -117,14 +133,20 @@ int rows = db.update(
 );
 
 return rows > 0;
+</p>
+<p>
 	Using the event ID as the selection criterion is important because it allows the application to modify a specific record rather than potentially changing multiple events with similar information. This enhancement strengthened my understanding of how unique identifiers are used when managing collections of records.
-	The EventAdapter was also modified to improve how the RecyclerView handles changes to the underlying data. In the original implementation, deleting an event caused the entire DashboardActivity to be recreated. I changed this behavior so that the adapter retrieves the updated cursor and refreshes the displayed data:
+</p>
+<p>
+The EventAdapter was also modified to improve how the RecyclerView handles changes to the underlying data. In the original implementation, deleting an event caused the entire DashboardActivity to be recreated. I changed this behavior so that the adapter retrieves the updated cursor and refreshes the displayed data:
 if (db.deleteEvent(id)) {
 
     cursor = db.getAllEvents("name");
 
     notifyDataSetChanged();
 }
+</p>
+<p>		
 	I also added a swapCursor() method that allows the adapter to replace its existing data source:
 public void swapCursor(Cursor newCursor) {
 
@@ -135,8 +157,15 @@ public void swapCursor(Cursor newCursor) {
     cursor = newCursor;
     notifyDataSetChanged();
 }
+</p>
+<p>		
 	This was an important improvement because it reduced unnecessary activity recreation and allowed the RecyclerView to update its data more directly. It also required me to think about resource management because database cursors need to be properly closed when they are no longer being used.
+</p>
+<p>
+	
 	The Category Two enhancements also included improvements to the dashboard interface. I updated the dashboard XML to provide controls for searching, sorting, and editing events. These changes connected the algorithms and database operations to the user interface. Instead of implementing a binary search or sorting operation that existed independently of the application, I integrated these capabilities into the event management workflow so that users could actually benefit from them.
+</p>
+<p>		
 	Input validation and error handling were also strengthened as part of the enhancements. For example, before an event is inserted, DashboardActivity checks that the required event name, date, and time fields contain information:
 if (name.isEmpty() || date.isEmpty() || time.isEmpty()) {
     Toast.makeText(this,
@@ -144,10 +173,20 @@ if (name.isEmpty() || date.isEmpty() || time.isEmpty()) {
             Toast.LENGTH_SHORT).show();
     return;
 }
+</p>
+<p>		
 	This prevents the application from attempting to process incomplete event records. Although input validation is also related to software engineering and security, it was important for Category Two because reliable algorithm and data processing depends on receiving valid input.
+</p>
+<p>		
 	The enhancements successfully met the course outcomes I planned to demonstrate in Module One. The most important outcome demonstrated through this category is my ability to design and evaluate computing solutions using appropriate algorithms and data structures. The binary search implementation demonstrates algorithm selection, while the sorting functionality, SQLite cursor management, RecyclerView data management, and event identifiers demonstrate different approaches to organizing and manipulating data. The enhancements also demonstrate my ability to integrate algorithms with existing application components instead of implementing them as isolated exercises.
+</p>
+<p>		
 	Enhancing this artifact reinforced the importance of selecting appropriate algorithms based on the problem being solved rather than relying on straightforward implementations. Although the original application functioned correctly, improving its search and sorting capabilities demonstrated how algorithmic improvements can significantly enhance the user experience without completely redesigning the application.
+</p>
+<p>		
 	One of the biggest challenges involved integrating the new algorithms into the existing Android architecture. Updating the RecyclerView efficiently after search, sort, edit, and delete operations required modifying the adapter logic and refreshing data without unnecessarily recreating activities. Another challenge was ensuring that new functionality, such as editing events and sorting by multiple fields, continued to work correctly alongside the existing database operations.
+</p>
+<p>		
 	Overall, this enhancement strengthened my understanding of applying algorithms and data structures within a real software application instead of isolated programming exercises. It also improved my ability to evaluate existing code, identify opportunities for optimization, and implement enhancements that improve both software performance and the overall user experience. These experiences have increased my confidence in designing efficient software solutions and prepared me for future software development projects.
 
 	</p>
