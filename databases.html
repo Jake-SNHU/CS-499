@@ -61,10 +61,17 @@
 
     <p>
         The artifact I selected for the databases category is a Python application developed during CS 340 that uses MongoDB to manage and visualize data from the Austin Animal Center. The project consists of two primary components: a reusable CRUD Python module that performs database operations and an interactive Dash dashboard that allows users to search, filter, and visualize animal records. The original artifact was created during my Database Systems course and demonstrated the basic implementation of create, read, update, and delete operations using MongoDB. While the original project successfully met the course requirements, I recognized that it could be significantly improved by adding stronger database functionality, better error handling, enhanced querying capabilities, and a more interactive user interface.
-	I selected this artifact because it demonstrates several important software development skills related to database design, data management, and user interaction. Database-driven applications are common in professional software development, and this project allowed me to demonstrate my ability to connect a backend database with an interactive front-end interface while following good software engineering practices.
-	One of the most significant improvements was enhancing the CRUD module to support more advanced database operations. In the original project, the read() method simply accepted a query and returned every matching document. During this enhancement, I redesigned the method to support projections, sorting, and pagination through optional parameters.
+    </p>
 
-def read(
+    <p>
+        I selected this artifact because it demonstrates several important software development skills related to database design, data management, and user interaction. Database-driven applications are common in professional software development, and this project allowed me to demonstrate my ability to connect a backend database with an interactive front-end interface while following good software engineering practices.
+    </p>
+
+    <p>
+        One of the most significant improvements was enhancing the CRUD module to support more advanced database operations. In the original project, the <code>read()</code> method simply accepted a query and returned every matching document. During this enhancement, I redesigned the method to support projections, sorting, and pagination through optional parameters.
+    </p>
+
+    <pre><code>def read(
         self,
         query=None,
         projection=None,
@@ -72,59 +79,116 @@ def read(
         ascending=True,
         page=1,
         page_size=100
-):
+):</code></pre>
 
-	Adding these parameters makes the module much more reusable because other applications can retrieve only the fields they need, sort the results by different attributes, and limit the number of returned records for improved performance.
-	I also improved database reliability by validating the MongoDB connection during initialization. Instead of assuming that the connection would succeed, the enhanced constructor verifies the connection using:
+    <p>
+        Adding these parameters makes the module much more reusable because other applications can retrieve only the fields they need, sort the results by different attributes, and limit the number of returned records for improved performance.
+    </p>
 
-self.client.server_info()
+    <p>
+        I also improved database reliability by validating the MongoDB connection during initialization. Instead of assuming that the connection would succeed, the enhanced constructor verifies the connection using:
+    </p>
 
-	If the database cannot be reached, the application immediately reports the error rather than failing later during a query. This provides better fault detection and improves overall reliability.
-	Another important enhancement involved replacing simple print statements with Python's logging framework. Throughout the CRUD module, successful operations and exceptions are now logged using statements such as:
+    <pre><code>self.client.server_info()</code></pre>
 
-logging.info("Animal inserted successfully.")
-logging.error(f"Update failed: {e}")
+    <p>
+        If the database cannot be reached, the application immediately reports the error rather than failing later during a query. This provides better fault detection and improves overall reliability.
+    </p>
 
-	Using structured logging is a professional software engineering practice because it makes troubleshooting significantly easier and provides detailed information about application behavior without cluttering the console.
+    <p>
+        Another important enhancement involved replacing simple print statements with Python's logging framework. Throughout the CRUD module, successful operations and exceptions are now logged using statements such as:
+    </p>
 
-	To improve data integrity, I also added validation before inserting new records into MongoDB. The create() method now verifies that required fields such as the animal type, breed, name, and age exist before allowing the document to be inserted.
+    <pre><code>logging.info("Animal inserted successfully.")
 
-required = [
+logging.error(f"Update failed: {e}")</code></pre>
+
+    <p>
+        Using structured logging is a professional software engineering practice because it makes troubleshooting significantly easier and provides detailed information about application behavior without cluttering the console.
+    </p>
+
+    <p>
+        To improve data integrity, I also added validation before inserting new records into MongoDB. The <code>create()</code> method now verifies that required fields such as the animal type, breed, name, and age exist before allowing the document to be inserted.
+    </p>
+
+    <pre><code>required = [
     "animal_type",
     "breed",
     "name",
     "age_upon_outcome_in_weeks"
-]
+]</code></pre>
 
-	This prevents incomplete records from entering the database and demonstrates defensive programming techniques.
+    <p>
+        This prevents incomplete records from entering the database and demonstrates defensive programming techniques.
+    </p>
 
-	Additional helper methods were added to make the CRUD module more reusable. These include methods such as search_by_breed(), search_rescue(), find_by_id(), and count(). Rather than repeatedly writing MongoDB queries throughout the dashboard, these methods encapsulate database functionality into reusable operations, improving maintainability and reducing duplicate code.
+    <p>
+        Additional helper methods were added to make the CRUD module more reusable. These include methods such as <code>search_by_breed()</code>, <code>search_rescue()</code>, <code>find_by_id()</code>, and <code>count()</code>. Rather than repeatedly writing MongoDB queries throughout the dashboard, these methods encapsulate database functionality into reusable operations, improving maintainability and reducing duplicate code.
+    </p>
 
-	The dashboard itself also received several significant improvements. The original dashboard only allowed users to filter animals by rescue category using radio buttons. I expanded the interface by adding a breed search box, a dynamic sorting dropdown, and a live animal counter.
+    <p>
+        The dashboard itself also received several significant improvements. The original dashboard only allowed users to filter animals by rescue category using radio buttons. I expanded the interface by adding a breed search box, a dynamic sorting dropdown, and a live animal counter.
+    </p>
 
-	The breed search uses MongoDB regular expressions to perform case-insensitive searches:
+    <p>
+        The breed search uses MongoDB regular expressions to perform case-insensitive searches:
+    </p>
 
-query["breed"] = {
+    <pre><code>query["breed"] = {
     "$regex": search_value,
     "$options": "i"
-}
+}</code></pre>
 
-	This provides a much more flexible search experience than exact string matching.
+    <p>
+        This provides a much more flexible search experience than exact string matching.
+    </p>
 
-	Sorting was also improved through a dropdown menu that allows users to organize results by breed, name, or age. The selected option is passed directly into the enhanced CRUD module, demonstrating separation between the user interface and the database layer.
-	The data visualization was expanded by replacing the original breed distribution chart with a histogram that displays the age distribution of animals using Plotly. This visualization provides more meaningful insight into the available data and better demonstrates my ability to communicate information through graphical analysis.
-	The interactive map was also improved. Selecting an animal now displays additional information including the animal's name, breed, color, and age inside the popup window instead of only displaying the name. This creates a more useful user experience while demonstrating how information retrieved from the database can be integrated into multiple user interface components.
-	Overall, these enhancements transformed the original course project into a more complete database application that better reflects professional software development practices.
-	The enhancements successfully met the course outcomes I planned during Module One. One of my primary goals was to demonstrate my ability to design software solutions that integrate databases with user interfaces while following sound software engineering principles. The redesigned CRUD module illustrates this through reusable methods, improved validation, structured logging, and modular database operations.
-	The project also demonstrates my ability to evaluate and improve existing software by identifying weaknesses in the original implementation and replacing them with more scalable solutions. Adding pagination, projection support, reusable helper methods, and improved querying functionality required me to analyze the original architecture and redesign portions of the application while maintaining compatibility with the dashboard.
-	Another planned outcome involved improving the user experience through better data presentation. The enhanced search functionality, sorting controls, animal counter, improved charts, and expanded map interface all contribute to making the application easier to use while demonstrating stronger integration between the backend database and the frontend dashboard.
+    <p>
+        Sorting was also improved through a dropdown menu that allows users to organize results by breed, name, or age. The selected option is passed directly into the enhanced CRUD module, demonstrating separation between the user interface and the database layer.
+    </p>
 
-	At this point, I believe the enhancements fully satisfy the planned outcome coverage for the databases category. No significant changes to my outcome plan are necessary because the completed enhancements demonstrate both technical database skills and software engineering principles.
-	Enhancing this artifact gave me a much deeper understanding of how professional database applications are designed. During the original course project, my focus was primarily on completing the required CRUD operations. Revisiting the project for CS 499 allowed me to think beyond simply making the code functional and instead consider maintainability, scalability, usability, and software quality.
-	One of the most valuable lessons I learned was the importance of modular software design. By moving searching, sorting, pagination, and specialized queries into the CRUD module, the dashboard became much cleaner and easier to maintain. Separating database logic from the user interface also makes future enhancements significantly easier because changes to one component have minimal impact on the other.
-	I also gained experience improving existing software instead of creating a project from scratch. Working with legacy code required me to understand the original design decisions before implementing enhancements without breaking existing functionality. This process closely resembles the type of maintenance and modernization work commonly performed in professional software development.
-	Overall, this enhancement demonstrates significant growth in my ability to design database applications that are modular, maintainable, scalable, and user friendly. The completed artifact reflects the knowledge and experience I have gained throughout the Computer Science program and serves as an excellent representation of my database development skills within my professional ePortfolio.
+    <p>
+        The data visualization was expanded by replacing the original breed distribution chart with a histogram that displays the age distribution of animals using Plotly. This visualization provides more meaningful insight into the available data and better demonstrates my ability to communicate information through graphical analysis.
+    </p>
 
+    <p>
+        The interactive map was also improved. Selecting an animal now displays additional information including the animal's name, breed, color, and age inside the popup window instead of only displaying the name. This creates a more useful user experience while demonstrating how information retrieved from the database can be integrated into multiple user interface components.
+    </p>
+
+    <p>
+        Overall, these enhancements transformed the original course project into a more complete database application that better reflects professional software development practices.
+    </p>
+
+    <p>
+        The enhancements successfully met the course outcomes I planned during Module One. One of my primary goals was to demonstrate my ability to design software solutions that integrate databases with user interfaces while following sound software engineering principles. The redesigned CRUD module illustrates this through reusable methods, improved validation, structured logging, and modular database operations.
+    </p>
+
+    <p>
+        The project also demonstrates my ability to evaluate and improve existing software by identifying weaknesses in the original implementation and replacing them with more scalable solutions. Adding pagination, projection support, reusable helper methods, and improved querying functionality required me to analyze the original architecture and redesign portions of the application while maintaining compatibility with the dashboard.
+    </p>
+
+    <p>
+        Another planned outcome involved improving the user experience through better data presentation. The enhanced search functionality, sorting controls, animal counter, improved charts, and expanded map interface all contribute to making the application easier to use while demonstrating stronger integration between the backend database and the frontend dashboard.
+    </p>
+
+    <p>
+        At this point, I believe the enhancements fully satisfy the planned outcome coverage for the databases category. No significant changes to my outcome plan are necessary because the completed enhancements demonstrate both technical database skills and software engineering principles.
+    </p>
+
+    <p>
+        Enhancing this artifact gave me a much deeper understanding of how professional database applications are designed. During the original course project, my focus was primarily on completing the required CRUD operations. Revisiting the project for CS 499 allowed me to think beyond simply making the code functional and instead consider maintainability, scalability, usability, and software quality.
+    </p>
+
+    <p>
+        One of the most valuable lessons I learned was the importance of modular software design. By moving searching, sorting, pagination, and specialized queries into the CRUD module, the dashboard became much cleaner and easier to maintain. Separating database logic from the user interface also makes future enhancements significantly easier because changes to one component have minimal impact on the other.
+    </p>
+
+    <p>
+        I also gained experience improving existing software instead of creating a project from scratch. Working with legacy code required me to understand the original design decisions before implementing enhancements without breaking existing functionality. This process closely resembles the type of maintenance and modernization work commonly performed in professional software development.
+    </p>
+
+    <p>
+        Overall, this enhancement demonstrates significant growth in my ability to design database applications that are modular, maintainable, scalable, and user friendly. The completed artifact reflects the knowledge and experience I have gained throughout the Computer Science program and serves as an excellent representation of my database development skills within my professional ePortfolio.
     </p>
 
 </main>
