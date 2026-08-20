@@ -65,9 +65,14 @@
 
     <p>
         The artifact I selected for the Software Design and Engineering category is my Android Event Tracker application that I originally developed in CS 360: Mobile Architecture and Programming. The application allows users to create an account, log in, manage events, and receive SMS reminders for upcoming events. It uses Java, Android Studio, SQLite, RecyclerView, and Android's runtime permission system. The original project demonstrated the fundamentals of Android application development, including user interface design, database management, and event-driven programming.
-
+	</p>
+	<p>
 	I selected this artifact because it contains multiple classes and components that work together to create a complete application. The project includes LoginActivity for authentication, DashboardActivity for event management, EventAdapter for displaying database records, DatabaseHelper for database operations, and PermissionActivity for handling SMS permissions. Because these components have different responsibilities, the project provided a good opportunity to demonstrate software engineering concepts such as modularity, separation of responsibilities, code organization, maintainability, input validation, error handling, and secure coding.
+	</p>
+	<p>
 	One of the primary Category One enhancements was improving the organization and maintainability of the existing code. In the original application, some activities contained most of their functionality directly inside the button click listeners. I refactored this structure by moving specific responsibilities into separate methods. For example, DashboardActivity now uses a dedicated saveEvent() method instead of placing all of the validation and database logic directly inside the Save button listener. This makes the code easier to read and allows the individual function to be tested and modified without having to work through the entire onCreate() method.
+	</p>
+	<p>
 	Another improvement was adding input validation. The original application allowed database operations to occur without consistently checking whether the user had entered valid information. I added validation to both the login and event creation processes. For example, the enhanced DashboardActivity checks whether the required event name, date, and time fields are empty before attempting to insert the event:
 if (name.isEmpty() || date.isEmpty() || time.isEmpty()) {
     Toast.makeText(this,
@@ -75,8 +80,14 @@ if (name.isEmpty() || date.isEmpty() || time.isEmpty()) {
             Toast.LENGTH_SHORT).show();
     return;
 }
+	</p>
+	<p>
 	This enhancement improves reliability because invalid or incomplete information is stopped before it reaches the database. I also added validation to LoginActivity, including a minimum eight-character password requirement. The application now provides feedback through setError() and Toast messages instead of allowing invalid input to continue through the authentication process.
+	</p>
+	<p>
 	I also improved the application's error handling. Database operations are now placed inside try-catch blocks in areas where failures could affect the user experience. For example, the enhanced login and registration methods catch exceptions and provide a meaningful message to the user rather than allowing an unexpected database error to cause the application to fail without feedback. This helped me understand that software engineering is not only about making the normal path work; the application also needs to account for unexpected input and runtime problems.
+	</p>
+	<p>
 	Security was another major area of improvement. The original application stored user passwords as plain text in SQLite. I changed the DatabaseHelper class so that passwords are hashed with SHA-256 before they are stored. The registerUser() method now uses:
 values.put(COL_PASSWORD, hashPassword(password));
 	The login process was also updated so that the password entered by the user is hashed before it is compared with the value stored in the database:
@@ -84,7 +95,11 @@ new String[]{
         username,
         hashPassword(password)
 }
+	</p>
+	<p>
 	This was an important enhancement because changing only the registration process would have broken authentication. I had to make sure that both sides of the process used the same hashing method. This experience reinforced the importance of understanding how changes to one component can affect other components throughout an application.
+	</p>
+	<p>
 	I also improved the database interaction code by replacing some of the original raw SQL operations with Android's parameterized database methods. For example, the enhanced checkUser() method uses db.query() with selection arguments rather than constructing a SQL statement containing user input. Similarly, event deletion uses a parameterized selection:
 db.delete(
         TABLE_EVENTS,
@@ -93,26 +108,40 @@ db.delete(
                 String.valueOf(id)
         }
 );
+	</p>
+	<p>
 	This improves the security and reliability of the application by reducing the possibility of SQL injection and keeping user-provided values separate from the SQL structure.
+	</p>
+	<p>
 	The EventAdapter was also improved as part of the software engineering enhancements. Instead of recreating the entire DashboardActivity after an event is deleted, the adapter now obtains an updated cursor and refreshes the RecyclerView:
 if (db.deleteEvent(id)) {
     cursor = db.getAllEvents("name");
     notifyDataSetChanged();
 }
+	</p>
+	<p>
 	This represents a more maintainable approach because the adapter is responsible for updating the list it displays instead of forcing the entire activity to restart. I also added swapCursor() functionality so that the adapter can replace its data source while properly closing the previous cursor.
+	</p>
+	<p>
 	Another improvement was documentation. I added comments and JavaDoc descriptions to classes and methods throughout the project. For example, methods such as saveEvent(), clearFields(), requestSmsPermission(), and validateInput() now explain their purpose and expected behavior. This makes the project easier for another developer to understand and maintain. It also helped me recognize the difference between comments that explain what code is doing and documentation that explains why a method exists and what responsibility it handles.
+	</p>
+	<p>
 	The enhancements successfully met the course outcomes I identified during Module One. I demonstrated software engineering best practices by restructuring methods, separating responsibilities, improving documentation, and making the application easier to maintain. I also demonstrated secure coding practices through password hashing, input validation, and parameterized database operations. Finally, I demonstrated my ability to evaluate an existing software system, identify weaknesses, and make targeted improvements without completely rewriting the application.
-
+	</p>
+	<p>
 	The enhancements completed for this artifact successfully met the course outcomes that I identified during Module One. First, I applied software engineering best practices by improving the application's structure, organization, and maintainability through better documentation, modular methods, and input validation. Second, I incorporated security principles by implementing password hashing and strengthening user authentication instead of storing sensitive information in plain text. Finally, I demonstrated the ability to analyze an existing software system, identify opportunities for improvement, and implement enhancements that align with professional software development practices.
-
+	</p>
+	<p>
 	I do not plan to make significant changes to my original outcome coverage because the enhancements successfully demonstrate the intended software engineering competencies. However, this artifact will be touched on again for the second category Algorithms and Data structures where more enhancements will be made. 
-
+	</p>
+	<p>
 	Enhancing this artifact gave me a much deeper understanding of software engineering beyond simply developing a working application. While the original project met its functional requirements, reviewing it from a professional perspective helped me recognize that production-quality software must also prioritize security, maintainability, readability, and user experience. I gained experience validating user input before interacting with the database, reinforcing the importance of preventing invalid or unexpected data from entering an application.
-
+	</p>
+	<p>
 	The most challenging part of the enhancement process was ensuring that the new security improvements remained compatible with the application's existing login and registration workflow. Introducing password hashing required updating both user registration and authentication so that the same hashing algorithm was consistently applied. Debugging these changes strengthened my understanding of how interconnected software components can be and the importance of testing after every modification.
-
+	</p>
+	<p>
 	Overall, this enhancement process demonstrated how software evolves through continuous improvement rather than remaining static after its initial implementation. The final application is more secure, more maintainable, and better reflects the professional software development practices that I have developed throughout the Computer Science program. I believe this artifact effectively represents both my technical skills and my growth as a software developer.
-
     </p>
 
 </main>
